@@ -17,23 +17,24 @@
 
 /* Define variáveis de cor para serem usadas no restante do CSS */
 :root {
-  --pink: #ff74a4; /* Variável para a cor rosa */
-  --violet: #9f6ea3; /* Variável para a cor violeta */
-  --lightblack: #515C6F; /* Variável para um tom de preto claro */
-  --white: #ffffff; /* Variável para a cor branca */
-  --darkwhite: #cecaca; /* Variável para um tom de branco escuro */
-  --pinkshadow: #ffcbdd; /* Variável para uma cor de sombra rosa */
-  --lightbshadow: rgba(0,0,0,0.15); /* Variável para uma sombra preta leve com opacidade de 15% */
+  --pink: #33275c; /* Cor rosa */
+  --violet: #352688; /* Cor violeta */
+  --lightblack: #8f389b; /* Tom de preto claro */
+  --white: #ffffff; /* Cor branca */
+  --darkwhite: #cecaca; /* Tom de branco escuro */
+  --pinkshadow: #ffcbdd; /* Sombra rosa */
+  --lightbshadow: rgba(0, 0, 0, 0.15); /* Sombra preta leve com 15% de opacidade */
 }
 
 /* Estiliza o corpo da página */
 body {
-  display: flex; /* Usa o Flexbox para o layout do corpo */
-  align-items: center; /* Alinha verticalmente o conteúdo no centro do corpo */
-  justify-content: center; /* Alinha horizontalmente o conteúdo no centro do corpo */
-  min-height: 100vh; /* Garante que o corpo ocupe no mínimo 100% da altura da viewport */
-  background: linear-gradient(var(--pink) 0%, var(--violet) 100%); /* Define um fundo com um gradiente linear de rosa para violeta */
+  display: flex; /* Usa Flexbox para o layout */
+  align-items: center; /* Alinha verticalmente ao centro */
+  justify-content: center; /* Alinha horizontalmente ao centro */
+  min-height: 100vh; /* Garante altura mínima de 100% da viewport */
+  background: linear-gradient(var(--pink) 0%, var(--violet) 100%); /* Gradiente de fundo de rosa para violeta */
 }
+
 
 /* Estiliza o contêiner principal do player */
 .wrapper {
@@ -93,152 +94,241 @@ body {
   height: 100%; /* Define a altura da imagem como 100% da altura da área pai */
   object-fit: cover; /* Ajusta a imagem para cobrir toda a área sem distorção, cortando a imagem se necessário */
 }
-/*Estiliza os detalhes da Música*/
-.song-details{
-  text-align:  center;
-  margin: 30px 0;
+
+/* Estiliza os detalhes da música */
+.song-details {
+  text-align: center; /* Centraliza o texto dentro do contêiner de detalhes da música */
+  margin: 30px 0; /* Adiciona uma margem superior e inferior de 30 pixels */
 }
 
-/* Estiliza os parágrafos demtro da seção detalhes da música*/
-.song-details p{
- color: var(--lightblack);
+/* Estiliza os parágrafos dentro da seção de detalhes da música */
+.song-details p {
+  color: var(--lightblack); /* Define a cor do texto dos parágrafos usando a variável CSS `--lightblack` */
 }
 
-/*Estiliza o nome do artista dentro da seção detalhes*/
-.song-details .artist{
-  font-size: 18px;
-  opacity: 0.9;
-  line-height: 35px;
+/* Estiliza o nome da música dentro da seção de detalhes */
+.song-details .name {
+  font-size: 21px; /* Define o tamanho da fonte do nome da música como 21 pixels */
 }
 
-/*Estiliza a area de progresso da música*/
-.progress-area{
- height: 6px;
- width: 100%;
- border-radius: 50px;
- background: #f0f0f0;
- cursor: pointer; 
+/* Estiliza o nome do artista dentro da seção de detalhes */
+.song-details .artist {
+  font-size: 18px; /* Define o tamanho da fonte do nome do artista como 18 pixels */
+  opacity: 0.9; /* Define a opacidade do texto para 90%, tornando-o ligeiramente transparente */
+  line-height: 35px; /* Define a altura da linha como 35 pixels, ajustando o espaçamento entre linhas */
 }
 
-/*Estiliza a barra de progresso dentro da area de progresso*/
-.progress-area .progress-bar{
- height: inherit;
- width: 0%;
- position: relative;
- border-radius: inherit;
- background: linear-gradient(90deg, var(--pink) 0%, var(--violet)100%); 
+/* Estiliza a área de progresso da música */
+.progress-area {
+  height: 6px; /* Define a altura da área de progresso como 6 pixels */
+  width: 100%; /* Define a largura da área de progresso como 100% da largura do contêiner pai */
+  border-radius: 50px; /* Adiciona bordas arredondadas com um raio de 50 pixels */
+  background: #f0f0f0; /* Define o fundo da área de progresso como uma cor cinza clara */
+  cursor: pointer; /* Altera o cursor para uma mão ao passar sobre a área de progresso, indicando que é clicável */
 }
 
-/*Estiliza o indicador na barra de progresso*/
-.progress-bar::before{
- content: "";
- position: absolute;
- height: 15px;
- width: 12px;
- border-radius: 50%;
- top: 50%;
- right: -5px;
- z-index: 2;
- opacity: 0;
- pointer-events: none;
- transform: translateY(-50%);
- background: inherit;
- transition: opacity 0.2s ease;
-} 
-
-/*Torna o indicador visivel quando a área de progresso é alvo d hover*/
-.progress-area:hover .progress-bar::before{
- opacity: 1;
- pointer-events: auto;
+/* Estiliza a barra de progresso dentro da área de progresso */
+.progress-area .progress-bar {
+  height: inherit; /* Define a altura da barra de progresso como a mesma da área de progresso */
+  width: 0%; /* Define a largura inicial da barra de progresso como 0% (deve ser alterada dinamicamente) */
+  position: relative; /* Define a posição como relativa para posicionar o pseudo-elemento `::before` */
+  border-radius: inherit; /* Define o raio da borda da barra de progresso como o mesmo da área de progresso */
+  background: linear-gradient(90deg, var(--pink) 0%, var(--violet) 100%); /* Define um fundo com um gradiente linear da cor rosa para violeta */
 }
 
-/*Adiciona uma margem superior à área do temporizador da música*/
-.progress-area .song-timer{
- margin-top: 2px;
+/* Estiliza o indicador na barra de progresso */
+.progress-bar::before {
+  content: ""; /* Define que o pseudo-elemento `::before` não possui conteúdo textual */
+  position: absolute; /* Posiciona o pseudo-elemento absolutamente em relação ao contêiner pai */
+  height: 12px; /* Define a altura do indicador como 12 pixels */
+  width: 12px; /* Define a largura do indicador como 12 pixels */
+  border-radius: 50%; /* Adiciona bordas arredondadas com um raio de 50%, criando um círculo */
+  top: 50%; /* Posiciona o topo do indicador no meio da altura do contêiner pai */
+  right: -5px; /* Posiciona o indicador 5 pixels fora da borda direita da barra de progresso */
+  z-index: 2; /* Define a ordem de empilhamento do indicador para garantir que ele esteja acima dos outros elementos */
+  opacity: 0; /* Define a opacidade do indicador como 0, tornando-o invisível inicialmente */
+  pointer-events: none; /* Impede que o indicador receba eventos de mouse */
+  transform: translateY(-50%); /* Ajusta a posição vertical do indicador para centralizá-lo em relação ao meio do contêiner pai */
+  background: inherit; /* Define o fundo do indicador como o mesmo da barra de progresso */
+  transition: opacity 0.2s ease; /* Adiciona uma transição suave de 0,2 segundos na opacidade do indicador */
 }
 
-/*Estiliza os span dentro da área do temporizador da música*/
-.song-timer span{
- font-size: 13px;
- color: var(--lighblack);
+/* Torna o indicador visível quando a área de progresso é alvo de hover */
+.progress-area:hover .progress-bar::before {
+  opacity: 1; /* Define a opacidade do indicador como 1, tornando-o totalmente visível */
+  pointer-events: auto; /* Permite que o indicador receba eventos de mouse */
 }
 
-/*Estiliza a seção de controles do Player*/
-.controls{
- margin: 40px 0 5px 0;
+/* Adiciona uma margem superior à área do temporizador da música */
+.progress-area .song-timer {
+  margin-top: 2px; /* Adiciona uma margem superior de 2 pixels */
 }
 
-/*Estiliza os icones dentro da seção controles*/
-.controls i{
- font-size: 28px;
- user-select: none;
- background: linear-gradient(var(--pink) 0%, var(--violet)100%);
- background-clip: text;
- -webkit-background-clip: text;
- -webkit-text-fill-color: transparent; 
+/* Estiliza os spans dentro da área do temporizador da música */
+.song-timer span {
+  font-size: 13px; /* Define o tamanho da fonte dos spans como 13 pixels */
+  color: var(--lightblack); /* Define a cor do texto usando a variável CSS `--lightblack` */
 }
 
-/*Estiliza o segundo e quarto icone dentro da seção de controles*/
+/* Estiliza a seção de controles do player */
+.controls {
+  margin: 40px 0 5px 0; /* Adiciona uma margem superior de 40 pixels e uma margem inferior de 5 pixels */
+}
+
+/* Estiliza os ícones dentro da seção de controles */
+.controls i {
+  font-size: 28px; /* Define o tamanho da fonte dos ícones como 28 pixels */
+  user-select: none; /* Impede que o texto dos ícones seja selecionado pelo usuário */
+  background: linear-gradient(var(--pink) 0%, var(--violet) 100%); /* Define um fundo com um gradiente linear da cor rosa para violeta */
+  background-clip: text; /* Faz com que o gradiente seja aplicado apenas ao texto, não ao fundo */
+  -webkit-background-clip: text; /* Prefixo específico para WebKit para aplicar o gradiente ao texto */
+  -webkit-text-fill-color: transparent; /* Define a cor de preenchimento do texto como transparente para permitir a visualização do gradiente */
+}
+
+/* Estiliza o segundo e quarto ícone dentro da seção de controles */
 .controls i:nth-child(2),
-.controls i:nth-child(4){
- font-size: 43px;
-} 
-
-/*Ajusta a margem direita do icone de pular para a musica anterior*/
-.controls #prev{
- margin-right: -13px;
+.controls i:nth-child(4) {
+  font-size: 43px; /* Define o tamanho da fonte para os ícones na segunda e quarta posição como 43 pixels */
 }
 
-/*Ajusta a margem esquerda do icone de pular para a proxima musica*/
-.controls #next{
- margin-left: -13px;
+/* Ajusta a margem direita do ícone de pular para a música anterior */
+.controls #prev {
+  margin-right: -13px; /* Adiciona uma margem negativa de 13 pixels à direita do ícone, movendo-o para a esquerda */
 }
 
-/*Estiliza o conteiner para o botão Player/Pausa*/
-.controls .play-pause{
- height: 54px;
- width: 54px;
- display: flex;
- cursor: pointer;
- align-items: center;
- justify-content: center;
- border-radius: 50%;
- background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%);
- box-shadow: 0px 0px 45px var(--pink);
+/* Ajusta a margem esquerda do ícone de pular para a próxima música */
+.controls #next {
+  margin-left: -13px; /* Adiciona uma margem negativa de 13 pixels à esquerda do ícone, movendo-o para a direita */
 }
 
-/*Estiliza o pseudo-elemento '::before' do botão Play/Pause*/
-.play-pause::before{
- position: absolute;
- content: "";
- height: 43px;
- width: 43px;
- border-radius: inherit;
- background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+/* Estiliza o contêiner para o botão de play/pausa */
+.controls .play-pause {
+  height: 54px; /* Define a altura do botão de play/pausa como 54 pixels */
+  width: 54px; /* Define a largura do botão de play/pausa como 54 pixels */
+  display: flex; /* Usa o Flexbox para o layout interno */
+  cursor: pointer; /* Altera o cursor para uma mão ao passar sobre o botão, indicando que é clicável */
+  align-items: center; /* Alinha verticalmente o conteúdo no centro do botão */
+  justify-content: center; /* Alinha horizontalmente o conteúdo no centro do botão */
+  border-radius: 50%; /* Adiciona bordas arredondadas com um raio de 50%, tornando o botão circular */
+  background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%); /* Define um fundo com um gradiente linear do branco para um tom de branco escuro */
+  box-shadow: 0px 0px 5px var(--pink); /* Adiciona uma sombra ao botão com deslocamento de 0 pixels e desfoque de 5 pixels usando a cor rosa */
 }
 
-/*Estiliza o icone dentro do botão play/pause*/
-.play-pause i{
- height: 43px;
- width: 43px;
- line-height: 43px;
- text-align: center;
- background: inherit;
- background-clip: text;
- -webkit-background-clip: text;
- -webkit-text-fill-color: transparent;
- position: absolute;
+/* Estiliza o pseudo-elemento `::before` do botão de play/pausa */
+.play-pause::before {
+  position: absolute; /* Posiciona o pseudo-elemento absolutamente em relação ao contêiner pai */
+  content: ""; /* Define que o pseudo-elemento `::before` não possui conteúdo textual */
+  height: 43px; /* Define a altura do pseudo-elemento como 43 pixels */
+  width: 43px; /* Define a largura do pseudo-elemento como 43 pixels */
+  border-radius: inherit; /* Define o raio da borda como o mesmo do contêiner pai, tornando-o circular */
+  background: linear-gradient(var(--pink) 0%, var(--violet) 100%); /* Define um fundo com um gradiente linear da cor rosa para violeta */
 }
 
-/*Esiliza a lista de musica*/
-/*Estiliza a lista de musica quando esta visivel*/
-/*Estiliza a linha dentro do cabeçalho de lista de musica*/
-/*Estiliza o texto dentro da linha de cabeçalho da lista de musica*/
-/*Estiliza a lista não ordenada dentro da lista de musica*/
-/*Remove a barra de rolagem padrão no webkit(Chrome, Safari)na list*/
-/*Estiliza os itens da linha dentro da lista de músicas*/
-/*Remove a borda inferior do ultimo item da lista*/
-/*Estiliza o texto dentro da classe 'row' e a tag 'span' dentro da list*/
-/*Estiliza o texto dentro da classe 'row' e a tag 'p' dentro da lista*/
-/*Estiliza o texto com a classe 'audio-duration' dentro da lista*/
-/*Estiliza os itens da lista que tem a classe 'playing'*/
+/* Estiliza o ícone dentro do botão de play/pausa */
+.play-pause i {
+  height: 43px; /* Define a altura do ícone como 43 pixels */
+  width: 43px; /* Define a largura do ícone como 43 pixels */
+  line-height: 43px; /* Define a altura da linha como 43 pixels, centralizando verticalmente o texto do ícone */
+  text-align: center; /* Centraliza horizontalmente o texto do ícone */
+  background: inherit; /* Define o fundo do ícone como o mesmo do contêiner pai */
+  background-clip: text; /* Aplica o fundo apenas ao texto do ícone, não ao fundo do contêiner */
+  -webkit-background-clip: text; /* Prefixo específico para WebKit para aplicar o fundo ao texto do ícone */
+  -webkit-text-fill-color: transparent; /* Define a cor de preenchimento do texto como transparente para permitir a visualização do gradiente */
+  position: absolute; /* Posiciona o ícone absolutamente em relação ao contêiner pai */
+}
+
+/* Estiliza a lista de músicas */
+.music-list {
+  position: absolute; /* Posiciona a lista de músicas absolutamente em relação ao contêiner pai */
+  background: var(--white); /* Define o fundo da lista de músicas como a cor branca (variável CSS) */
+  width: 100%; /* Define a largura da lista de músicas como 100% da largura do contêiner pai */
+  left: 0; /* Posiciona a lista de músicas na borda esquerda do contêiner pai */
+  bottom: -55%; /* Posiciona a lista de músicas 55% abaixo da borda inferior do contêiner pai */
+  opacity: 0; /* Define a opacidade da lista de músicas como 0, tornando-a invisível inicialmente */
+  pointer-events: none; /* Impede que a lista de músicas receba eventos de mouse */
+  z-index: 5; /* Define a ordem de empilhamento da lista de músicas, garantindo que esteja acima de outros elementos */
+  padding: 15px 30px; /* Adiciona um preenchimento interno de 15 pixels na parte superior e inferior, e 30 pixels nas laterais */
+  border-radius: 15px; /* Adiciona bordas arredondadas com um raio de 15 pixels */
+  box-shadow: 0px -5px 10px rgba(0,0,0,0.1); /* Adiciona uma sombra à lista de músicas com deslocamento vertical de -5 pixels e desfoque de 10 pixels */
+  transition: all 0.15s ease-out; /* Adiciona uma transição suave de 0,15 segundos para todas as propriedades */
+}
+
+/* Estiliza a lista de músicas quando está visível */
+.music-list.show {
+  bottom: 0; /* Posiciona a lista de músicas na borda inferior do contêiner pai */
+  opacity: 1; /* Define a opacidade da lista de músicas como 1, tornando-a totalmente visível */
+  pointer-events: auto; /* Permite que a lista de músicas receba eventos de mouse */
+}
+
+/* Estiliza a linha dentro do cabeçalho da lista de músicas */
+.header .row {
+  display: flex; /* Usa o Flexbox para o layout da linha */
+  align-items: center; /* Alinha verticalmente o conteúdo no centro da linha */
+  font-size: 19px; /* Define o tamanho da fonte como 19 pixels */
+  color: var(--lightblack); /* Define a cor do texto usando a variável CSS `--lightblack` */
+}
+
+/* Estiliza o ícone dentro da linha do cabeçalho da lista de músicas */
+.header .row i {
+  cursor: default; /* Define o cursor como padrão (não clicável) */
+}
+
+/* Estiliza o texto dentro da linha do cabeçalho da lista de músicas */
+.header .row span {
+  margin-left: 5px; /* Adiciona uma margem esquerda de 5 pixels ao texto */
+}
+
+/* Estiliza o ícone de fechar dentro do cabeçalho da lista de músicas */
+.header #close {
+  font-size: 22px; /* Define o tamanho da fonte do ícone de fechar como 22 pixels */
+  color: var(--lightblack); /* Define a cor do ícone usando a variável CSS `--lightblack` */
+}
+
+/* Estiliza a lista não ordenada dentro da lista de músicas */
+.music-list ul {
+  margin: 10px 0; /* Adiciona uma margem superior e inferior de 10 pixels */
+  max-height: 260px; /* Define a altura máxima da lista como 260 pixels */
+  overflow: auto; /* Adiciona uma barra de rolagem se o conteúdo ultrapassar a altura máxima */
+}
+
+/* Remove a barra de rolagem padrão no WebKit (Chrome, Safari) para a lista de músicas */
+.music-list ul::-webkit-scrollbar {
+  width: 0px; /* Define a largura da barra de rolagem como 0 pixels (oculta a barra de rolagem) */
+}
+
+/* Estiliza os itens da lista dentro da lista de músicas */
+.music-list ul li {
+  list-style: none; /* Remove os marcadores padrão dos itens da lista */
+  display: flex; /* Usa o Flexbox para o layout dos itens da lista */
+  cursor: pointer; /* Altera o cursor para uma mão ao passar sobre os itens, indicando que são clicáveis */
+  padding-bottom: 10px; /* Adiciona um preenchimento interno na parte inferior de 10 pixels */
+  margin-bottom: 5px; /* Adiciona uma margem inferior de 5 pixels entre os itens da lista */
+  color: var(--lightblack); /* Define a cor do texto usando a variável CSS `--lightblack` */
+  border-bottom: 1px solid #E5E5E5; /* Adiciona uma borda inferior de 1 pixel sólida com a cor cinza clara #E5E5E5 */
+}
+
+/* Remove a borda inferior do último item da lista */
+.music-list ul li:last-child {
+  border-bottom: 0px; /* Define a borda inferior como 0 pixels para o último item da lista, removendo a borda */
+}
+
+/* Estiliza o texto dentro da classe `row` e a tag `span` dentro dos itens da lista */
+.music-list ul li .row span {
+  font-size: 17px; /* Define o tamanho da fonte dos spans como 17 pixels */
+}
+
+/* Estiliza o texto dentro da classe `row` e a tag `p` dentro dos itens da lista */
+.music-list ul li .row p {
+  opacity: 0.9; /* Define a opacidade do texto como 90%, tornando-o ligeiramente transparente */
+}
+
+/* Estiliza o texto com a classe `audio-duration` dentro dos itens da lista */
+ul li .audio-duration {
+  font-size: 16px; /* Define o tamanho da fonte do texto com a classe `audio-duration` como 16 pixels */
+}
+
+/* Estiliza os itens da lista que têm a classe `playing` */
+ul li.playing {
+  pointer-events: none; /* Impede que o item da lista receba eventos de mouse (não clicável) */
+  color: var(--violet); /* Define a cor do texto como a variável CSS `--violet` */
+}
